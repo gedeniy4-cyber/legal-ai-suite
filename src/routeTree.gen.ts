@@ -10,19 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppWritingCoachRouteImport } from './routes/app.writing-coach'
 import { Route as AppSummarizerRouteImport } from './routes/app.summarizer'
+import { Route as AppSettingsRouteImport } from './routes/app.settings'
 import { Route as AppResearchRouteImport } from './routes/app.research'
+import { Route as AppPromptsRouteImport } from './routes/app.prompts'
 import { Route as AppPlannerRouteImport } from './routes/app.planner'
+import { Route as AppHistoryRouteImport } from './routes/app.history'
 import { Route as AppEmailRouteImport } from './routes/app.email'
 import { Route as AppDocExplainerRouteImport } from './routes/app.doc-explainer'
 import { Route as AppCourtPrepRouteImport } from './routes/app.court-prep'
 import { Route as AppContractReviewRouteImport } from './routes/app.contract-review'
 import { Route as AppCitationRouteImport } from './routes/app.citation'
+import { Route as AppChatRouteImport } from './routes/app.chat'
 import { Route as AppCaseTimelineRouteImport } from './routes/app.case-timeline'
 import { Route as AppArgumentRouteImport } from './routes/app.argument'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
@@ -30,6 +35,11 @@ import { Route as ApiChatRouteImport } from './routes/api/chat'
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
   id: '/reset-password',
   path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -62,14 +72,29 @@ const AppSummarizerRoute = AppSummarizerRouteImport.update({
   path: '/summarizer',
   getParentRoute: () => AppRoute,
 } as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppResearchRoute = AppResearchRouteImport.update({
   id: '/research',
   path: '/research',
   getParentRoute: () => AppRoute,
 } as any)
+const AppPromptsRoute = AppPromptsRouteImport.update({
+  id: '/prompts',
+  path: '/prompts',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppPlannerRoute = AppPlannerRouteImport.update({
   id: '/planner',
   path: '/planner',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHistoryRoute = AppHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
   getParentRoute: () => AppRoute,
 } as any)
 const AppEmailRoute = AppEmailRouteImport.update({
@@ -97,6 +122,11 @@ const AppCitationRoute = AppCitationRouteImport.update({
   path: '/citation',
   getParentRoute: () => AppRoute,
 } as any)
+const AppChatRoute = AppChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppCaseTimelineRoute = AppCaseTimelineRouteImport.update({
   id: '/case-timeline',
   path: '/case-timeline',
@@ -117,17 +147,22 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
+  '/pricing': typeof PricingRoute
   '/reset-password': typeof ResetPasswordRoute
   '/api/chat': typeof ApiChatRoute
   '/app/argument': typeof AppArgumentRoute
   '/app/case-timeline': typeof AppCaseTimelineRoute
+  '/app/chat': typeof AppChatRoute
   '/app/citation': typeof AppCitationRoute
   '/app/contract-review': typeof AppContractReviewRoute
   '/app/court-prep': typeof AppCourtPrepRoute
   '/app/doc-explainer': typeof AppDocExplainerRoute
   '/app/email': typeof AppEmailRoute
+  '/app/history': typeof AppHistoryRoute
   '/app/planner': typeof AppPlannerRoute
+  '/app/prompts': typeof AppPromptsRoute
   '/app/research': typeof AppResearchRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/summarizer': typeof AppSummarizerRoute
   '/app/writing-coach': typeof AppWritingCoachRoute
   '/app/': typeof AppIndexRoute
@@ -135,17 +170,22 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/pricing': typeof PricingRoute
   '/reset-password': typeof ResetPasswordRoute
   '/api/chat': typeof ApiChatRoute
   '/app/argument': typeof AppArgumentRoute
   '/app/case-timeline': typeof AppCaseTimelineRoute
+  '/app/chat': typeof AppChatRoute
   '/app/citation': typeof AppCitationRoute
   '/app/contract-review': typeof AppContractReviewRoute
   '/app/court-prep': typeof AppCourtPrepRoute
   '/app/doc-explainer': typeof AppDocExplainerRoute
   '/app/email': typeof AppEmailRoute
+  '/app/history': typeof AppHistoryRoute
   '/app/planner': typeof AppPlannerRoute
+  '/app/prompts': typeof AppPromptsRoute
   '/app/research': typeof AppResearchRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/summarizer': typeof AppSummarizerRoute
   '/app/writing-coach': typeof AppWritingCoachRoute
   '/app': typeof AppIndexRoute
@@ -155,17 +195,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
+  '/pricing': typeof PricingRoute
   '/reset-password': typeof ResetPasswordRoute
   '/api/chat': typeof ApiChatRoute
   '/app/argument': typeof AppArgumentRoute
   '/app/case-timeline': typeof AppCaseTimelineRoute
+  '/app/chat': typeof AppChatRoute
   '/app/citation': typeof AppCitationRoute
   '/app/contract-review': typeof AppContractReviewRoute
   '/app/court-prep': typeof AppCourtPrepRoute
   '/app/doc-explainer': typeof AppDocExplainerRoute
   '/app/email': typeof AppEmailRoute
+  '/app/history': typeof AppHistoryRoute
   '/app/planner': typeof AppPlannerRoute
+  '/app/prompts': typeof AppPromptsRoute
   '/app/research': typeof AppResearchRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/summarizer': typeof AppSummarizerRoute
   '/app/writing-coach': typeof AppWritingCoachRoute
   '/app/': typeof AppIndexRoute
@@ -176,17 +221,22 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/auth'
+    | '/pricing'
     | '/reset-password'
     | '/api/chat'
     | '/app/argument'
     | '/app/case-timeline'
+    | '/app/chat'
     | '/app/citation'
     | '/app/contract-review'
     | '/app/court-prep'
     | '/app/doc-explainer'
     | '/app/email'
+    | '/app/history'
     | '/app/planner'
+    | '/app/prompts'
     | '/app/research'
+    | '/app/settings'
     | '/app/summarizer'
     | '/app/writing-coach'
     | '/app/'
@@ -194,17 +244,22 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/pricing'
     | '/reset-password'
     | '/api/chat'
     | '/app/argument'
     | '/app/case-timeline'
+    | '/app/chat'
     | '/app/citation'
     | '/app/contract-review'
     | '/app/court-prep'
     | '/app/doc-explainer'
     | '/app/email'
+    | '/app/history'
     | '/app/planner'
+    | '/app/prompts'
     | '/app/research'
+    | '/app/settings'
     | '/app/summarizer'
     | '/app/writing-coach'
     | '/app'
@@ -213,17 +268,22 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/auth'
+    | '/pricing'
     | '/reset-password'
     | '/api/chat'
     | '/app/argument'
     | '/app/case-timeline'
+    | '/app/chat'
     | '/app/citation'
     | '/app/contract-review'
     | '/app/court-prep'
     | '/app/doc-explainer'
     | '/app/email'
+    | '/app/history'
     | '/app/planner'
+    | '/app/prompts'
     | '/app/research'
+    | '/app/settings'
     | '/app/summarizer'
     | '/app/writing-coach'
     | '/app/'
@@ -233,6 +293,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AppRoute: typeof AppRouteWithChildren
   AuthRoute: typeof AuthRoute
+  PricingRoute: typeof PricingRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   ApiChatRoute: typeof ApiChatRoute
 }
@@ -244,6 +305,13 @@ declare module '@tanstack/react-router' {
       path: '/reset-password'
       fullPath: '/reset-password'
       preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -288,6 +356,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppSummarizerRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/settings': {
+      id: '/app/settings'
+      path: '/settings'
+      fullPath: '/app/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/research': {
       id: '/app/research'
       path: '/research'
@@ -295,11 +370,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppResearchRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/prompts': {
+      id: '/app/prompts'
+      path: '/prompts'
+      fullPath: '/app/prompts'
+      preLoaderRoute: typeof AppPromptsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/planner': {
       id: '/app/planner'
       path: '/planner'
       fullPath: '/app/planner'
       preLoaderRoute: typeof AppPlannerRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/history': {
+      id: '/app/history'
+      path: '/history'
+      fullPath: '/app/history'
+      preLoaderRoute: typeof AppHistoryRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/email': {
@@ -337,6 +426,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCitationRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/chat': {
+      id: '/app/chat'
+      path: '/chat'
+      fullPath: '/app/chat'
+      preLoaderRoute: typeof AppChatRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/case-timeline': {
       id: '/app/case-timeline'
       path: '/case-timeline'
@@ -364,13 +460,17 @@ declare module '@tanstack/react-router' {
 interface AppRouteChildren {
   AppArgumentRoute: typeof AppArgumentRoute
   AppCaseTimelineRoute: typeof AppCaseTimelineRoute
+  AppChatRoute: typeof AppChatRoute
   AppCitationRoute: typeof AppCitationRoute
   AppContractReviewRoute: typeof AppContractReviewRoute
   AppCourtPrepRoute: typeof AppCourtPrepRoute
   AppDocExplainerRoute: typeof AppDocExplainerRoute
   AppEmailRoute: typeof AppEmailRoute
+  AppHistoryRoute: typeof AppHistoryRoute
   AppPlannerRoute: typeof AppPlannerRoute
+  AppPromptsRoute: typeof AppPromptsRoute
   AppResearchRoute: typeof AppResearchRoute
+  AppSettingsRoute: typeof AppSettingsRoute
   AppSummarizerRoute: typeof AppSummarizerRoute
   AppWritingCoachRoute: typeof AppWritingCoachRoute
   AppIndexRoute: typeof AppIndexRoute
@@ -379,13 +479,17 @@ interface AppRouteChildren {
 const AppRouteChildren: AppRouteChildren = {
   AppArgumentRoute: AppArgumentRoute,
   AppCaseTimelineRoute: AppCaseTimelineRoute,
+  AppChatRoute: AppChatRoute,
   AppCitationRoute: AppCitationRoute,
   AppContractReviewRoute: AppContractReviewRoute,
   AppCourtPrepRoute: AppCourtPrepRoute,
   AppDocExplainerRoute: AppDocExplainerRoute,
   AppEmailRoute: AppEmailRoute,
+  AppHistoryRoute: AppHistoryRoute,
   AppPlannerRoute: AppPlannerRoute,
+  AppPromptsRoute: AppPromptsRoute,
   AppResearchRoute: AppResearchRoute,
+  AppSettingsRoute: AppSettingsRoute,
   AppSummarizerRoute: AppSummarizerRoute,
   AppWritingCoachRoute: AppWritingCoachRoute,
   AppIndexRoute: AppIndexRoute,
@@ -397,6 +501,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppRoute: AppRouteWithChildren,
   AuthRoute: AuthRoute,
+  PricingRoute: PricingRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   ApiChatRoute: ApiChatRoute,
 }
